@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    background-color: orange;
+}
+
+.root {
+    width: 100%;
+}
+
+.menu {
+    display: flex;
+    height: 10vh;
+
+    background-color: yellow;
+}
+
+.stock-items {
+    display: flex;
+    flex-wrap: wrap;
+
+    /* height: 90vh; */
+}
+
+.stock-item {
+    width: 150px;
+    height: 150px;
+    background-color: wheat;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 1rem;
+}
