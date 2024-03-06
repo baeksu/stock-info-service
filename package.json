@@ -18,7 +18,6 @@
   "homepage": "https://github.com/baeksu/stock-info-service#readme",
   "dependencies": {
     "axios": "^1.6.7",
-    "express": "^4.18.3",
-    "jszip": "^3.10.1"
+    "express": "^4.18.3"
   }
 }
