@@ -2,3 +2,9 @@
 
 # Ignore Node.js dependencies
 node_modules/
+
+# Ignore stock zip, xml file, folder
+*.zip
+*.xml
+CORPCODE/
+
