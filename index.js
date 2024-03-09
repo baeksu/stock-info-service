@@ -34,3 +34,14 @@ if (fs.existsSync(`${extractFilePath}/CORPCODE.xml`)) {
             console.log(error);
         });
 }
+
+parseXml();
+
+//xml 파일 파싱하기
+function parseXml() {
+    const xmlData = fs.readFileSync(`${extractFilePath}/CORPCODE.xml`);
+    const stockList = []; //xml 파싱 후 정목 정보 저장 배열
+
+    // const res = xmlData.split("\n");
+    console.log(xmlData);
+}
