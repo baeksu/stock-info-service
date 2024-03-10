@@ -2,6 +2,7 @@
 const axios = require("axios");
 const AdmZip = require("adm-zip");
 const fs = require("fs");
+const xml2js = require("xml2js");
 
 //금융감독원 openapi key
 //나중에 서비스로 만들꺼면 opendartapikey 를 입력값으로 UI 에서 받아서 사용해야 함
@@ -38,10 +39,28 @@ if (fs.existsSync(`${extractFilePath}/CORPCODE.xml`)) {
 parseXml();
 
 //xml 파일 파싱하기
-function parseXml() {
-    const xmlData = fs.readFileSync(`${extractFilePath}/CORPCODE.xml`);
-    const stockList = []; //xml 파싱 후 정목 정보 저장 배열
 
-    // const res = xmlData.split("\n");
-    console.log(xmlData);
+function parseXml() {
+    const xmlData = fs.readFileSync(`${extractFilePath}/CORPCODE.xml`, "utf-8");
+    const parser = new xml2js.Parser({ explicitArray: false, mergeAttrs: true });
+    const corps = [];
+
+    //xml 파싱
+    parser.parseString(xmlData, (err, result) => {
+        if (err) {
+            console.log(`error! during parsing : ${err}`);
+        } else {
+            const listCorp = result.result.list;
+            listCorp.forEach((item) => {
+                const corpCode = item.corp_code;
+                const corpName = item.corp_name;
+                corps.push({
+                    corpCode,
+                    corpName,
+                });
+            });
+        }
+    });
+
+    console.log(corps);
 }
