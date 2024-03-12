@@ -3,12 +3,9 @@ const fs = require("fs");
 const axios = require("axios");
 const xmlParser = require("./xmlParser");
 
-const openDartApiKey = "69872aa9aab15c6390ed38b51202b0021295cc12";
-const corpCodeUrl = `https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key=${openDartApiKey}`;
-
 module.exports = {
-    getCorpData: function (extractFilePath) {
-        //파일이 이미 존재하면 ok , 존재하지 않으면 get 요청으로 이진데이터 회신
+    getCorpData: function (openDartApiKey, extractFilePath) {
+        const corpCodeUrl = `https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key=${openDartApiKey}`; //파일이 이미 존재하면 ok , 존재하지 않으면 get 요청으로 이진데이터 회신
         if (fs.existsSync(`${extractFilePath}/CORPCODE.xml`)) {
             console.log("File already exists!");
             return xmlParser.parseXml(extractFilePath);
